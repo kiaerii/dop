@@ -1,1 +1,13 @@
+import re
+f=open('text.txt').readline()
 
+date=re.findall(r'\b(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.(\d{4})\b', date)
+
+form=[f'{year}-{month}-{day}' for day,month,year in date]
+sort=sorted(form, key=lambda x: (int(x.split('-')[0]), int(x.split('-')[1]), int(x.split('-')[2])))
+
+d=open("dates.txt", "w")
+d.write("\n".join(sort))
+
+d.close()
+f.close()
