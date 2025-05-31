@@ -1,0 +1,17 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+data=np.genfromtxt('data.csv',delimiter=',') #разделитель ,
+x=data[:,0] #1 столбик
+y=data[:,1] #2 столбик
+
+
+plt.figure(figsize=(10,6)) #график
+
+plt.scatter(x,y,color='pink',s=30,label='Данные') #s-размер
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('График зависимости x от y')
+plt.grid(True)
+plt.legend()
+plt.show()
