@@ -1,0 +1,45 @@
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+import numpy as np
+
+fig,ax=plt.subplots()
+ax.set_xlim(0, 10)
+ax.set_ylim(-1.1, 1.1)
+ax.set_xlabel('x')
+ax.set_ylabel('sin(x)')
+ax.set_title('Анимация построения графика sin(x)')
+ax.grid(True)
+
+#Пустые линии
+line,=ax.plot([],[],color='pink')
+point,=ax.plot([],[],'o',color='blue')
+
+#Фу-ия инициализации
+def init():
+    line.set_data([],[])
+    point.set_data([],[])
+    return line,point
+
+#Фу-ция анимации
+def animate(i):
+    # Генерируем данные
+    x=np.linspace(0, 2*np.pi, 100)
+    y=np.sin(x)
+#Показывает только первые i точек
+    x_show=x[:i]
+    y_show=y[:i]
+    
+    #Обновяем данные для линии и точек
+    line.set_data(x_show, y_show)
+    points.set_data(x_show, y_show)
+    
+    return line, points
+
+ani = FuncAnimation(fig, animate, 
+    frames=100,  # Количество кадров (по числу точек)
+    init_func=init,
+    blit=True, 
+    interval=50,  # Интервал между кадрами в мс
+    repeat=False)
+
+plt.show()
