@@ -22,7 +22,7 @@ def init():
 
 #Фу-ция анимации
 def animate(i):
-    # Генерируем данные
+    #Генерируем данные
     x=np.linspace(0, 2*np.pi, 100)
     y=np.sin(x)
 #Показывает только первые i точек
@@ -36,10 +36,10 @@ def animate(i):
     return line, points
 
 ani = FuncAnimation(fig, animate, 
-    frames=100,  # Количество кадров (по числу точек)
+    frames=100,  #Количество кадров по числу точек
     init_func=init,
     blit=True, 
-    interval=50,  # Интервал между кадрами в мс
+    interval=50,  #Интервал между кадрами в мс
     repeat=False)
 
 plt.show()
